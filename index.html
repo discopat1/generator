@@ -9,12 +9,38 @@
 <body>
     <div>
         <h1>Counter</h1>
-        <div id="count"></div>
+        <p id="counter"></p>
     </div>
 
     <script type="text/javascript">
-        var count = 0;
-        document.querySelector('#count').innerHTML = count;
+
+    function * genEx() {
+        yield 'Hello';
+        yield 'World';
+    }
+
+    const g = genEx();
+    console.log(g.next());
+    console.log(g.next());
+    console.log(g.next());
+
+    function * counter(){
+        let count = 0;
+        while(count < count + 1){
+            yield count++;
+        }
+    }
+        const generator = counter();
+
+        generator.next();
+        generator.next();
+        // generator.next();
+
+        console.log(generator.next().value);
+        document.getElementById('counter').innerHTML = (generator.next().value);
+
+    
+
     </script>
 </body>
 </html>
